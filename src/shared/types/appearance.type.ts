@@ -14,7 +14,7 @@ type HeadBlendDataType = {
 };
 type HeadBlendPaletteColorType = {
     id: number;
-    rgba: Color;
+    Rgba: Color;
 };
 type FaceFeatureType = {
     index: number;
