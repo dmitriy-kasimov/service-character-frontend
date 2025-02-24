@@ -1,5 +1,5 @@
 import { EditAppearance } from '@/features/EditAppearance';
-import { Card } from '@tr271v0r/ui-tool-kit';
+import { Card } from '@project-1114/ui-kit';
 import styles from './CardEditAppearance.module.scss';
 
 export const CardEditAppearance = () => {
