@@ -6,13 +6,14 @@ import {
     Button,
     RadioGroup,
     Slider,
+    HStack,
 } from '@project-1114/ui-kit';
 import { TEditAppearance } from '../model/types/TEditAppearance.ts';
 import { DefaultAppearance } from '../const/DefaultAppearance.ts';
 import { TAppearance } from '../model/types/TAppearance.ts';
 import { ESex } from '../../../shared/types/ESex.ts';
 import { post } from '../../../shared/api/post.ts';
-import { femaleHairOverlays, maleHairOverlays } from '../const/hairOverlays.ts';
+import { faceFeatures } from '../const/faceFeatures.ts';
 
 export const EditAppearance: FC = () => {
     const [editor, setEditor] = useState<TEditAppearance>({
@@ -23,17 +24,6 @@ export const EditAppearance: FC = () => {
 
     const updateCharacter = () => {
         const isFemale = editor.sex === ESex.FEMALE;
-        setEditor((prev) => ({
-            ...prev,
-            appearance: {
-                ...prev.appearance,
-                hairOverlay: isFemale
-                    ? //@ts-expect-error later
-                      femaleHairOverlays[prev.appearance.hair]
-                    : //@ts-expect-error later
-                      maleHairOverlays[prev.appearance.hair],
-            },
-        }));
 
         if (isFemale) {
             setEditor((prev) => ({
@@ -70,6 +60,19 @@ export const EditAppearance: FC = () => {
                 [param]: value,
             },
         });
+        updateCharacter();
+    };
+
+    const handleChangeFaceFeature = (index: number, value: number) => {
+        setEditor((prev) => ({
+            ...editor,
+            appearance: {
+                ...editor.appearance,
+                faceFeatures: prev.appearance.faceFeatures.map((feature, i) =>
+                    i === index ? value : feature,
+                ),
+            },
+        }));
         updateCharacter();
     };
 
@@ -159,6 +162,22 @@ export const EditAppearance: FC = () => {
                         max={1}
                         step={0.1}
                     />
+                    <Text>Face features</Text>
+                    {faceFeatures.map((feature, index) => (
+                        <HStack gap={'s'} align={'center'}>
+                            <Text>{feature}:</Text>
+                            <Slider
+                                value={editor.appearance.faceFeatures[index]}
+                                onChange={(value) =>
+                                    handleChangeFaceFeature(index, value)
+                                }
+                                min={-1}
+                                step={0.1}
+                                max={1}
+                                key={feature}
+                            />
+                        </HStack>
+                    ))}
                 </VStack>
             </Card>
 

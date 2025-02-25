@@ -21,6 +21,8 @@ export const DefaultAppearance: Record<ESex, TAppearance> = {
         hairColor2: 5,
         hairColor1: 1,
         facialHairOpacity: 0.6,
+        //
+        faceFeatures: new Array(20).fill(0),
     },
     [ESex.FEMALE]: {
         faceMother: 45,
@@ -41,5 +43,6 @@ export const DefaultAppearance: Record<ESex, TAppearance> = {
         hairColor2: 40,
         hairColor1: 4,
         facialHairOpacity: 0,
+        faceFeatures: new Array(20).fill(0),
     },
 };
