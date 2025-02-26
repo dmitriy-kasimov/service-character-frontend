@@ -23,6 +23,14 @@ export const DefaultAppearance: Record<ESex, TAppearance> = {
         facialHairOpacity: 0.6,
         //
         faceFeatures: new Array(20).fill(0),
+        opacityOverlays: {
+            0: { value: 5, opacity: 0.5 },
+            3: { value: 5, opacity: 0.5 },
+            6: { value: 5, opacity: 0.5 },
+            7: { value: 5, opacity: 0.5 },
+            9: { value: 5, opacity: 0.5 },
+            11: { value: 5, opacity: 0.5 },
+        },
     },
     [ESex.FEMALE]: {
         faceMother: 45,
@@ -44,5 +52,13 @@ export const DefaultAppearance: Record<ESex, TAppearance> = {
         hairColor1: 4,
         facialHairOpacity: 0,
         faceFeatures: new Array(20).fill(0),
+        opacityOverlays: {
+            0: { value: 5, opacity: 0.5 },
+            3: { value: 5, opacity: 0.5 },
+            6: { value: 5, opacity: 0.5 },
+            7: { value: 5, opacity: 0.5 },
+            9: { value: 5, opacity: 0.5 },
+            11: { value: 5, opacity: 0.5 },
+        },
     },
 };

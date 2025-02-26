@@ -14,6 +14,11 @@ import { TAppearance } from '../model/types/TAppearance.ts';
 import { ESex } from '../../../shared/types/ESex.ts';
 import { post } from '../../../shared/api/post.ts';
 import { faceFeatures } from '../const/faceFeatures.ts';
+import { opacityOverlays } from '../const/opacityOverlays.ts';
+import {
+    TOpacityOverlayId,
+    TOpacityOverlayOptions,
+} from '../model/types/TOpacityOverlay.ts';
 
 export const EditAppearance: FC = () => {
     const [editor, setEditor] = useState<TEditAppearance>({
@@ -76,6 +81,26 @@ export const EditAppearance: FC = () => {
         updateCharacter();
     };
 
+    const handleChangeOverlayOpacity = (
+        id: TOpacityOverlayId,
+        option: keyof TOpacityOverlayOptions,
+        value: number,
+    ) => {
+        setEditor((prev) => ({
+            ...prev,
+            appearance: {
+                ...prev.appearance,
+                opacityOverlays: {
+                    ...prev.appearance.opacityOverlays,
+                    [id]: {
+                        ...prev.appearance.opacityOverlays[id],
+                        [option]: value,
+                    },
+                },
+            },
+        }));
+        updateCharacter();
+    };
     return (
         <VStack gap={'l'}>
             <Card contentMargin={'m'} variant={'outlined'}>
@@ -177,6 +202,51 @@ export const EditAppearance: FC = () => {
                                 key={feature}
                             />
                         </HStack>
+                    ))}
+                    <Text>Opacity overlays</Text>
+                    {Object.entries(opacityOverlays).map(([id, overlay]) => (
+                        <VStack gap={'s'} key={overlay.label}>
+                            <HStack gap={'s'} align={'center'}>
+                                <Text>{overlay.label} value: </Text>
+                                <Slider
+                                    value={
+                                        editor.appearance.opacityOverlays[
+                                            id as TOpacityOverlayId
+                                        ].value
+                                    }
+                                    onChange={(value) =>
+                                        handleChangeOverlayOpacity(
+                                            id as TOpacityOverlayId,
+                                            'value',
+                                            value,
+                                        )
+                                    }
+                                    min={overlay.min}
+                                    step={1}
+                                    max={overlay.max}
+                                />
+                            </HStack>
+                            <HStack gap={'s'} align={'center'}>
+                                <Text>{overlay.label} opacity: </Text>
+                                <Slider
+                                    value={
+                                        editor.appearance.opacityOverlays[
+                                            id as TOpacityOverlayId
+                                        ].opacity
+                                    }
+                                    onChange={(value) =>
+                                        handleChangeOverlayOpacity(
+                                            id as TOpacityOverlayId,
+                                            'opacity',
+                                            value,
+                                        )
+                                    }
+                                    min={0}
+                                    step={0.1}
+                                    max={1}
+                                />
+                            </HStack>
+                        </VStack>
                     ))}
                 </VStack>
             </Card>
