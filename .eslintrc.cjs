@@ -26,7 +26,7 @@ module.exports = {
       },
     ],
     'mega/fsd-layers-import': [
-      'error',
+      'warn',
       {
         alias: '@',
         ignoreImportPatterns: [],
