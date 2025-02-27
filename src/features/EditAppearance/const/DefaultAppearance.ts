@@ -23,7 +23,7 @@ export const DefaultAppearance: Record<ESex, TAppearance> = {
         facialHairOpacity: 0.6,
         //
         faceFeatures: new Array(20).fill(0),
-        opacityOverlays: {
+        overlays: {
             0: { value: 5, opacity: 0.5 },
             3: { value: 5, opacity: 0.5 },
             6: { value: 5, opacity: 0.5 },
@@ -52,7 +52,7 @@ export const DefaultAppearance: Record<ESex, TAppearance> = {
         hairColor1: 4,
         facialHairOpacity: 0,
         faceFeatures: new Array(20).fill(0),
-        opacityOverlays: {
+        overlays: {
             0: { value: 5, opacity: 0.5 },
             3: { value: 5, opacity: 0.5 },
             6: { value: 5, opacity: 0.5 },

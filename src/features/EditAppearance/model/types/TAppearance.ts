@@ -1,4 +1,4 @@
-import { TEditorOpacityOverlay } from './TOpacityOverlay.ts';
+import { TEditorOverlay } from '../../../EditOverlays/model/types/TOverlay.ts';
 
 export type TAppearance = {
     faceFather: number;
@@ -23,5 +23,5 @@ export type TAppearance = {
     //
     faceFeatures: number[];
     //
-    opacityOverlays: TEditorOpacityOverlay;
+    overlays: TEditorOverlay;
 };
