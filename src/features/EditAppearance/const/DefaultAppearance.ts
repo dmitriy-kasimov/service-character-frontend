@@ -14,7 +14,7 @@ export const DefaultAppearance: Record<ESex, TAppearance> = {
         eyebrows: 0,
         eyeColor: 3,
         //
-        hair: 4,
+        hair: 0,
         eyes: 5,
         eyebrowsColor1: 4,
         eyebrowsOpacity: 1,

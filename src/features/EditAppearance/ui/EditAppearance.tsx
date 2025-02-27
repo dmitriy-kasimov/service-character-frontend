@@ -12,13 +12,20 @@ import { TEditAppearance } from '../model/types/TEditAppearance.ts';
 import { DefaultAppearance } from '../const/DefaultAppearance.ts';
 import { TAppearance } from '../model/types/TAppearance.ts';
 import { ESex } from '../../../shared/types/ESex.ts';
-import { post } from '../../../shared/api/post.ts';
+import { triggerClientEvent } from '../../../shared/api/post.ts';
 import { faceFeatures } from '../const/faceFeatures.ts';
 import { opacityOverlays } from '../const/opacityOverlays.ts';
 import {
     TOpacityOverlayId,
     TOpacityOverlayOptions,
 } from '../model/types/TOpacityOverlay.ts';
+import {
+    eyebrowNames,
+    facialHair,
+    femaleHair,
+    hairColors,
+    maleHair,
+} from '../const/hairInfo.ts';
 
 export const EditAppearance: FC = () => {
     const [editor, setEditor] = useState<TEditAppearance>({
@@ -41,7 +48,9 @@ export const EditAppearance: FC = () => {
             }));
         }
 
-        post('f:c:updateCharacter', JSON.stringify(editor));
+        const str = JSON.stringify(editor);
+        console.log(editor);
+        triggerClientEvent('f:c:updateCharacter', str);
     };
 
     const handleChangeSex = (value: string) => {
@@ -248,10 +257,97 @@ export const EditAppearance: FC = () => {
                             </HStack>
                         </VStack>
                     ))}
+                    <Text>Hair</Text>
+                    <Slider
+                        value={editor.appearance.hair}
+                        onChange={(value) => handleChangeParam('hair', value)}
+                        min={0}
+                        max={
+                            editor.sex === ESex.MALE
+                                ? maleHair.length
+                                : femaleHair.length
+                        }
+                        step={1}
+                    />
+                    <Slider
+                        value={editor.appearance.hairColor1}
+                        onChange={(value) =>
+                            handleChangeParam('hairColor1', value)
+                        }
+                        min={0}
+                        max={hairColors.length}
+                        step={1}
+                    />
+                    <Slider
+                        value={editor.appearance.hairColor2}
+                        onChange={(value) =>
+                            handleChangeParam('hairColor2', value)
+                        }
+                        min={0}
+                        max={hairColors.length}
+                        step={1}
+                    />
+                    <Slider
+                        value={editor.appearance.eyebrows}
+                        onChange={(value) =>
+                            handleChangeParam('eyebrows', value)
+                        }
+                        min={0}
+                        max={eyebrowNames.length}
+                        step={1}
+                    />
+                    <Slider
+                        value={editor.appearance.eyebrowsColor1}
+                        onChange={(value) =>
+                            handleChangeParam('eyebrowsColor1', value)
+                        }
+                        min={0}
+                        max={hairColors.length}
+                        step={1}
+                    />
+                    {editor.sex === ESex.MALE ? (
+                        <VStack gap={'s'}>
+                            <Slider
+                                value={editor.appearance.facialHair}
+                                onChange={(value) =>
+                                    handleChangeParam('facialHair', value)
+                                }
+                                min={0}
+                                max={facialHair.length}
+                                step={1}
+                            />
+                            <Slider
+                                value={editor.appearance.facialHairOpacity}
+                                onChange={(value) =>
+                                    handleChangeParam(
+                                        'facialHairOpacity',
+                                        value,
+                                    )
+                                }
+                                min={0}
+                                max={1.0}
+                                step={0.1}
+                            />
+                            <Slider
+                                value={editor.appearance.facialHairColor1}
+                                onChange={(value) =>
+                                    handleChangeParam('facialHairColor1', value)
+                                }
+                                min={0}
+                                max={hairColors.length}
+                                step={1}
+                            />
+                        </VStack>
+                    ) : null}
                 </VStack>
             </Card>
 
-            <Button fullWidth onClick={() => console.log(editor)}>
+            <Button
+                fullWidth
+                onClick={() => {
+                    updateCharacter();
+                }}
+            >
                 <Text>Create</Text>
             </Button>
         </VStack>
