@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { RadioGroup, RadioGroupOptionType } from '@project-1114/ui-kit';
-import { useAppDispatch } from '@/app/providers/store';
 import { editSexActions } from '../model/slices/editSexSlice.ts';
 import { ESex } from '@/shared/types/ESex.ts';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
 
 const options: RadioGroupOptionType<ESex>[] = [
     {
