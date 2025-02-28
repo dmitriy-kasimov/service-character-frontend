@@ -16,9 +16,9 @@ export const EditFaceFeatures: FC = () => {
     const features = useSelector(getFaceFeatures);
 
     return (
-        <VStack gap={'m'} align={'center'}>
+        <VStack gap={'m'} align={'center'} max>
             {Object.entries(faceFeatures).map(([featureIndex, feature]) => (
-                <VStack gap={'xs'} align={'start'} key={featureIndex} max>
+                <VStack gap={'xs'} align={'start'} key={featureIndex}>
                     <Text>{feature.description}</Text>
                     <HStack gap={'s'} align={'center'}>
                         <Text size={'s'}>{feature.from}</Text>
@@ -33,6 +33,7 @@ export const EditFaceFeatures: FC = () => {
                             min={-1}
                             step={0.1}
                             max={1}
+                            showValue={false}
                         />
                         <Text size={'s'}>{feature.to}</Text>
                     </HStack>
