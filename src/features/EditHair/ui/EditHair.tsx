@@ -1,54 +1,102 @@
 import { FC } from 'react';
-import { Slider, VStack } from '@project-1114/ui-kit';
+import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { ESex } from '@/shared/types/ESex.ts';
 
 import { hairColors } from '@/shared/const/hairColors.ts';
 import { maleHair } from '../const/maleHair.ts';
 import { femaleHair } from '../const/femaleHair.ts';
 import { eyebrows } from '../const/eyebrows.ts';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
+import { useSelector } from 'react-redux';
+import { getHair } from '../model/selectors/editHairSelectors.ts';
+import { THair } from '../model/types/EditHairSchema.ts';
+import { editHairActions } from '../model/slices/editHairSlice.ts';
+import { getSex } from '@/features/EditSex';
 
 export const EditHair: FC = () => {
+    const dispatch = useAppDispatch();
+    const hair = useSelector(getHair);
+
+    const handleChangeParamHair = (param: keyof THair, value: number) => {
+        dispatch(editHairActions.change({ [param]: value }));
+    };
+
+    const currentSex = useSelector(getSex);
+    const haircutCollection = currentSex === ESex.MALE ? maleHair : femaleHair;
+    const countHaircuts = haircutCollection.length;
+
     return (
         <VStack gap={'s'}>
-            <Slider
-                value={editor.appearance.hair}
-                onChange={(value) => handleChangeParam('hair', value)}
-                min={0}
-                max={
-                    editor.sex === ESex.MALE
-                        ? maleHair.length
-                        : femaleHair.length
-                }
-                step={1}
-            />
-            <Slider
-                value={editor.appearance.hairColor1}
-                onChange={(value) => handleChangeParam('hairColor1', value)}
-                min={0}
-                max={hairColors.length}
-                step={1}
-            />
-            <Slider
-                value={editor.appearance.hairColor2}
-                onChange={(value) => handleChangeParam('hairColor2', value)}
-                min={0}
-                max={hairColors.length}
-                step={1}
-            />
-            <Slider
-                value={editor.appearance.eyebrows}
-                onChange={(value) => handleChangeParam('eyebrows', value)}
-                min={0}
-                max={eyebrows.length}
-                step={1}
-            />
-            <Slider
-                value={editor.appearance.eyebrowsColor1}
-                onChange={(value) => handleChangeParam('eyebrowsColor1', value)}
-                min={0}
-                max={hairColors.length}
-                step={1}
-            />
+            <VStack gap={'xs'} align={'start'} max>
+                <Text>Hair</Text>
+                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                    <Slider
+                        value={hair.hair}
+                        onChange={(value) =>
+                            handleChangeParamHair('hair', value)
+                        }
+                        min={0}
+                        max={countHaircuts}
+                        step={1}
+                    />
+                </HStack>
+            </VStack>
+            <VStack gap={'xs'} align={'start'} max>
+                <Text>Hair color 1</Text>
+                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                    <Slider
+                        value={hair.hairColor1}
+                        onChange={(value) =>
+                            handleChangeParamHair('hairColor1', value)
+                        }
+                        min={0}
+                        max={hairColors.length}
+                        step={1}
+                    />
+                </HStack>
+            </VStack>
+            <VStack gap={'xs'} align={'start'} max>
+                <Text>Hair color 2</Text>
+                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                    <Slider
+                        value={hair.hairColor2}
+                        onChange={(value) =>
+                            handleChangeParamHair('hairColor2', value)
+                        }
+                        min={0}
+                        max={hairColors.length}
+                        step={1}
+                    />
+                </HStack>
+            </VStack>
+            <VStack gap={'xs'} align={'start'} max>
+                <Text>Eyebrows</Text>
+                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                    <Slider
+                        value={hair.eyebrows}
+                        onChange={(value) =>
+                            handleChangeParamHair('eyebrows', value)
+                        }
+                        min={0}
+                        max={eyebrows.length}
+                        step={1}
+                    />
+                </HStack>
+            </VStack>
+            <VStack gap={'xs'} align={'start'} max>
+                <Text>Eyebrows color</Text>
+                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                    <Slider
+                        value={hair.eyebrowsColor1}
+                        onChange={(value) =>
+                            handleChangeParamHair('eyebrowsColor1', value)
+                        }
+                        min={0}
+                        max={hairColors.length}
+                        step={1}
+                    />
+                </HStack>
+            </VStack>
         </VStack>
     );
 };

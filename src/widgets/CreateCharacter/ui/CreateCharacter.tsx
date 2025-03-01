@@ -4,6 +4,7 @@ import { EditSex } from '@/features/EditSex';
 import { EditFaceFeatures } from '@/features/EditFaceFeatures';
 import { EditOverlays } from '@/features/EditOverlays';
 import { EditInheritance } from '@/features/EditInheritance';
+import { EditHair } from '@/features/EditHair';
 
 export const CreateCharacter: FC = () => {
     return (
@@ -16,6 +17,11 @@ export const CreateCharacter: FC = () => {
                 title={<Text size={'l'}>Inheritance</Text>}
                 description={<EditInheritance />}
             />
+            <Accordion
+                title={<Text size={'l'}>Hair</Text>}
+                description={<EditHair />}
+            />
+
             <Accordion
                 title={<Text size={'l'}>Face Features</Text>}
                 description={<EditFaceFeatures />}

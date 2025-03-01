@@ -5,6 +5,7 @@ import { editSexReducer } from '@/features/EditSex';
 import { editFaceFeaturesReducer } from '@/features/EditFaceFeatures';
 import { editOverlaysReducer } from '@/features/EditOverlays';
 import { editInheritanceReducer } from '@/features/EditInheritance';
+import { editHairReducer } from '@/features/EditHair';
 
 export const store = configureStore({
     reducer: {
@@ -12,6 +13,7 @@ export const store = configureStore({
         editFaceFeatures: editFaceFeaturesReducer,
         editOverlays: editOverlaysReducer,
         editInheritance: editInheritanceReducer,
+        editHair: editHairReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });
