@@ -1,27 +1,33 @@
 import { FC } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { TOverlayId } from '../model/types/TOverlay.ts';
-import { overlays } from '../const/overlays.ts';
+import { overlaysData } from '../const/overlays.ts';
+import { useSelector } from 'react-redux';
+import { getOverlays } from '../model/selectors/editOverlaysSelectors.ts';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
+import { editOverlaysActions } from '../model/slices/editOverlaysSlice.ts';
 
 export const EditOverlays: FC = () => {
+    const overlays = useSelector(getOverlays);
+    const dispatch = useAppDispatch();
+
+    const handleChangeValue = (id: TOverlayId, value: number) => {
+        dispatch(editOverlaysActions.changeValue({ [id]: value }));
+    };
+    const handleChangeOpacity = (id: TOverlayId, opacity: number) => {
+        dispatch(editOverlaysActions.changeOpacity({ [id]: opacity }));
+    };
+
     return (
         <VStack gap={'m'}>
-            {Object.entries(overlays).map(([id, overlay]) => (
+            {Object.entries(overlaysData).map(([id, overlay]) => (
                 <VStack gap={'s'} key={overlay.label}>
                     <HStack gap={'s'} align={'center'}>
                         <Text>{overlay.label} value: </Text>
                         <Slider
-                            value={
-                                editor.appearance.opacityOverlays[
-                                    id as TOverlayId
-                                ].value
-                            }
+                            value={overlays[id as TOverlayId].value}
                             onChange={(value) =>
-                                handleChangeOverlayOpacity(
-                                    id as TOverlayId,
-                                    'value',
-                                    value,
-                                )
+                                handleChangeValue(id as TOverlayId, value)
                             }
                             min={overlay.min}
                             step={1}
@@ -31,17 +37,9 @@ export const EditOverlays: FC = () => {
                     <HStack gap={'s'} align={'center'}>
                         <Text>{overlay.label} opacity: </Text>
                         <Slider
-                            value={
-                                editor.appearance.opacityOverlays[
-                                    id as TOverlayId
-                                ].opacity
-                            }
-                            onChange={(value) =>
-                                handleChangeOverlayOpacity(
-                                    id as TOverlayId,
-                                    'opacity',
-                                    value,
-                                )
+                            value={overlays[id as TOverlayId].opacity}
+                            onChange={(opacity) =>
+                                handleChangeOpacity(id as TOverlayId, opacity)
                             }
                             min={0}
                             step={0.1}

@@ -1,6 +1,6 @@
 import { TOverlayData, TOverlayId } from '../model/types/TOverlay.ts';
 
-export const overlays: Record<TOverlayId, TOverlayData> = {
+export const overlaysData: Record<TOverlayId, TOverlayData> = {
     0: {
         label: 'Blemish',
         min: 0,

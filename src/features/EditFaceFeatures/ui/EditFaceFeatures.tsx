@@ -16,11 +16,11 @@ export const EditFaceFeatures: FC = () => {
     const features = useSelector(getFaceFeatures);
 
     return (
-        <VStack gap={'m'} align={'center'} max>
+        <VStack gap={'l'} align={'center'} max>
             {Object.entries(faceFeatures).map(([featureIndex, feature]) => (
-                <VStack gap={'xs'} align={'start'} key={featureIndex}>
+                <VStack gap={'xs'} align={'start'} key={featureIndex} max>
                     <Text>{feature.description}</Text>
-                    <HStack gap={'s'} align={'center'}>
+                    <HStack gap={'s'} align={'center'} justify={'center'} max>
                         <Text size={'s'}>{feature.from}</Text>
                         <Slider
                             value={features[+featureIndex as EFaceFeature]}
