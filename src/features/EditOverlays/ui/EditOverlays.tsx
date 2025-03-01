@@ -22,8 +22,9 @@ export const EditOverlays: FC = () => {
         <VStack gap={'m'}>
             {Object.entries(overlaysData).map(([id, overlay]) => (
                 <VStack gap={'s'} key={overlay.label}>
+                    <Text>{overlay.label}</Text>
                     <HStack gap={'s'} align={'center'}>
-                        <Text>{overlay.label} value: </Text>
+                        <Text size={'s'}>value: </Text>
                         <Slider
                             value={overlays[id as TOverlayId].value}
                             onChange={(value) =>
@@ -35,7 +36,7 @@ export const EditOverlays: FC = () => {
                         />
                     </HStack>
                     <HStack gap={'s'} align={'center'}>
-                        <Text>{overlay.label} opacity: </Text>
+                        <Text size={'s'}>opacity: </Text>
                         <Slider
                             value={overlays[id as TOverlayId].opacity}
                             onChange={(opacity) =>
