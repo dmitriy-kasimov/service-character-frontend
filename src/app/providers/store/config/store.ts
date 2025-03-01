@@ -4,12 +4,14 @@ import { TypedUseSelectorHook, useSelector } from 'react-redux';
 import { editSexReducer } from '@/features/EditSex';
 import { editFaceFeaturesReducer } from '@/features/EditFaceFeatures';
 import { editOverlaysReducer } from '@/features/EditOverlays';
+import { editInheritanceReducer } from '@/features/EditInheritance';
 
 export const store = configureStore({
     reducer: {
         editSex: editSexReducer,
         editFaceFeatures: editFaceFeaturesReducer,
         editOverlays: editOverlaysReducer,
+        editInheritance: editInheritanceReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

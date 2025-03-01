@@ -3,6 +3,7 @@ import { Accordion, Text, VStack } from '@project-1114/ui-kit';
 import { EditSex } from '@/features/EditSex';
 import { EditFaceFeatures } from '@/features/EditFaceFeatures';
 import { EditOverlays } from '@/features/EditOverlays';
+import { EditInheritance } from '@/features/EditInheritance';
 
 export const CreateCharacter: FC = () => {
     return (
@@ -10,6 +11,10 @@ export const CreateCharacter: FC = () => {
             <Accordion
                 title={<Text size={'l'}>Sex</Text>}
                 description={<EditSex />}
+            />
+            <Accordion
+                title={<Text size={'l'}>Inheritance</Text>}
+                description={<EditInheritance />}
             />
             <Accordion
                 title={<Text size={'l'}>Face Features</Text>}
