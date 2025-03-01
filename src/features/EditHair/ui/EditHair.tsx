@@ -12,6 +12,7 @@ import { getHair } from '../model/selectors/editHairSelectors.ts';
 import { THair } from '../model/types/EditHairSchema.ts';
 import { editHairActions } from '../model/slices/editHairSlice.ts';
 import { getSex } from '@/features/EditSex';
+import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 
 export const EditHair: FC = () => {
     const dispatch = useAppDispatch();
@@ -19,6 +20,7 @@ export const EditHair: FC = () => {
 
     const handleChangeParamHair = (param: keyof THair, value: number) => {
         dispatch(editHairActions.change({ [param]: value }));
+        triggerClientEvent<THair>('f:c:editHair', hair);
     };
 
     const currentSex = useSelector(getSex);

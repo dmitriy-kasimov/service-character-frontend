@@ -1,11 +1,12 @@
 import { FC } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
-import { TOverlayId } from '../model/types/TOverlay.ts';
+import { TOverlayId, TOverlays } from '../model/types/TOverlay.ts';
 import { overlaysData } from '../const/overlays.ts';
 import { useSelector } from 'react-redux';
 import { getOverlays } from '../model/selectors/editOverlaysSelectors.ts';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
 import { editOverlaysActions } from '../model/slices/editOverlaysSlice.ts';
+import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 
 export const EditOverlays: FC = () => {
     const overlays = useSelector(getOverlays);
@@ -16,6 +17,7 @@ export const EditOverlays: FC = () => {
     };
     const handleChangeOpacity = (id: TOverlayId, opacity: number) => {
         dispatch(editOverlaysActions.changeOpacity({ [id]: opacity }));
+        triggerClientEvent<TOverlays>('f:c:editOverlays', overlays);
     };
 
     return (

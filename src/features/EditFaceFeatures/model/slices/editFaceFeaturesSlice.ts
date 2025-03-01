@@ -1,4 +1,7 @@
-import { EditFaceFeaturesSchema } from '../types/EditFaceFeaturesSchema.ts';
+import {
+    EditFaceFeaturesSchema,
+    TFaceFeatures,
+} from '../types/EditFaceFeaturesSchema.ts';
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { EFaceFeature } from '../types/EFaceFeature.ts';
 
@@ -31,7 +34,7 @@ const editFaceFeaturesSlice = createSlice({
     name: 'editFaceFeatures',
     initialState,
     reducers: {
-        change: (state, action: PayloadAction<Record<number, number>>) => {
+        change: (state, action: PayloadAction<Partial<TFaceFeatures>>) => {
             state.faceFeatures = { ...state.faceFeatures, ...action.payload };
         },
     },

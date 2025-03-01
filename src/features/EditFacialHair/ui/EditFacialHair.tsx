@@ -7,6 +7,7 @@ import { useSelector } from 'react-redux';
 import { getFacialHair } from '../model/selectors/editFacialHairSelectors.ts';
 import { TFacialHair } from '../model/types/EditFacialHairSchema.ts';
 import { editFacialHairActions } from '../model/slices/editFacialHairSlice.ts';
+import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 
 export const EditFacialHair: FC = () => {
     const dispatch = useAppDispatch();
@@ -17,6 +18,7 @@ export const EditFacialHair: FC = () => {
         value: number,
     ) => {
         dispatch(editFacialHairActions.change({ [param]: value }));
+        triggerClientEvent<TFacialHair>('f:c:editFacialHair', facialHair);
     };
 
     return (

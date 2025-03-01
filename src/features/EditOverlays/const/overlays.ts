@@ -1,4 +1,5 @@
-import { TOverlayData, TOverlayId } from '../model/types/TOverlay.ts';
+import { TOverlayId } from '../model/types/TOverlay.ts';
+import { TOverlayData } from '../model/types/TOverlayData.ts';
 
 export const overlaysData: Record<TOverlayId, TOverlayData> = {
     0: {

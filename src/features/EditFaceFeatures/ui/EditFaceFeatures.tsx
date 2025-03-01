@@ -6,14 +6,17 @@ import { getFaceFeatures } from '../model/selectors/editFaceFeaturesSelectors.ts
 import { useSelector } from 'react-redux';
 import { editFaceFeaturesActions } from '../model/slices/editFaceFeaturesSlice.ts';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
+import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
+import { TFaceFeatures } from '../model/types/EditFaceFeaturesSchema.ts';
 
 export const EditFaceFeatures: FC = () => {
     const dispatch = useAppDispatch();
+    const features = useSelector(getFaceFeatures);
+
     const handleChangeFaceFeature = (feature: EFaceFeature, value: number) => {
         dispatch(editFaceFeaturesActions.change({ [feature]: value }));
+        triggerClientEvent<TFaceFeatures>('f:c:editFaceFeatures', features);
     };
-
-    const features = useSelector(getFaceFeatures);
 
     return (
         <VStack gap={'l'} align={'center'} max>

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux';
 import { TInheritance } from '../model/types/EditInheritanceSchema.ts';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
 import { editInheritanceActions } from '../model/slices/editInheritanceSlice.ts';
+import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 
 export const EditInheritance: FC = () => {
     const inheritance = useSelector(getInheritance);
@@ -15,6 +16,7 @@ export const EditInheritance: FC = () => {
         value: number,
     ) => {
         dispatch(editInheritanceActions.change({ [param]: value }));
+        triggerClientEvent<TInheritance>('f:c:editInheritance', inheritance);
     };
 
     return (
