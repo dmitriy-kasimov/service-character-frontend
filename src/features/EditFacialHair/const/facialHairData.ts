@@ -1,4 +1,4 @@
-export const facialHair = [
+export const facialHairData = [
     'Stubble',
     'Balbo',
     'Circle Beard',
