@@ -8,6 +8,7 @@ import { editInheritanceReducer } from '@/features/EditInheritance';
 import { editHairReducer } from '@/features/EditHair';
 import { editFacialHairReducer } from '@/features/EditFacialHair';
 import { editEyesReducer } from '@/features/EditEyes';
+import { editColorOverlaysReducer } from '@/features/EditColorOverlays';
 
 export const store = configureStore({
     reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
         editHair: editHairReducer,
         editFacialHair: editFacialHairReducer,
         editEyes: editEyesReducer,
+        editColorOverlays: editColorOverlaysReducer,
     },
     middleware: (getDefaultMiddleware) => getDefaultMiddleware(),
 });

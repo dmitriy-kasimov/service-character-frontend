@@ -13,6 +13,7 @@ import { TInheritance } from '@/features/EditInheritance';
 import { TOverlays } from '@/features/EditOverlays';
 import { ESex } from '@/shared/types/ESex.ts';
 import { getEyes, TEyes } from '@/features/EditEyes';
+import { getColorOverlays, TColorOverlays } from '@/features/EditColorOverlays';
 
 export const useInitCharacter = () => {
     const features = useSelector(getFaceFeatures);
@@ -22,6 +23,7 @@ export const useInitCharacter = () => {
     const overlays = useSelector(getOverlays);
     const sex = useSelector(getSex);
     const eyes = useSelector(getEyes);
+    const colorOverlays = useSelector(getColorOverlays);
 
     const init = () => {
         triggerClientEvent<ESex>('f:c:editSex', sex);
@@ -29,6 +31,10 @@ export const useInitCharacter = () => {
         triggerClientEvent<TEyes>('f:c:editEyes', eyes);
         triggerClientEvent<TFaceFeatures>('f:c:editFaceFeatures', features);
         triggerClientEvent<TOverlays>('f:c:editOverlays', overlays);
+        triggerClientEvent<TColorOverlays>(
+            'f:c:editColorOverlays',
+            colorOverlays,
+        );
         triggerClientEvent<THair>('f:c:editHair', hair);
         triggerClientEvent<TFacialHair>('f:c:editFacialHair', facialHair);
     };

@@ -8,6 +8,7 @@ import { EditHair } from '@/features/EditHair';
 import { EditFacialHair } from '@/features/EditFacialHair';
 import { useInitCharacter } from '@/shared/hooks/useInitCharacter.ts';
 import { EditEyes } from '@/features/EditEyes';
+import { EditColorOverlays } from '@/features/EditColorOverlays';
 
 export const CreateCharacter: FC = () => {
     const init = useInitCharacter();
@@ -41,6 +42,10 @@ export const CreateCharacter: FC = () => {
             <Accordion
                 title={<Text size={'l'}>Overlays</Text>}
                 description={<EditOverlays />}
+            />
+            <Accordion
+                title={<Text size={'l'}>Color overlays</Text>}
+                description={<EditColorOverlays />}
             />
             <Accordion
                 title={<Text size={'l'}>Facial hair</Text>}
