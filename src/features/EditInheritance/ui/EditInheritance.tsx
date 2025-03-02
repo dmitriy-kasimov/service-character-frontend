@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { getInheritance } from '../model/selectors/editInheritanceSelectors.ts';
 import { useSelector } from 'react-redux';
@@ -16,8 +16,11 @@ export const EditInheritance: FC = () => {
         value: number,
     ) => {
         dispatch(editInheritanceActions.change({ [param]: value }));
-        triggerClientEvent<TInheritance>('f:c:editInheritance', inheritance);
     };
+
+    useEffect(() => {
+        triggerClientEvent<TInheritance>('f:c:editInheritance', inheritance);
+    }, [inheritance]);
 
     return (
         <VStack gap={'l'} align={'center'} max>

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { TOverlayId, TOverlays } from '../model/types/TOverlay.ts';
 import { overlaysData } from '../const/overlays.ts';
@@ -17,8 +17,11 @@ export const EditOverlays: FC = () => {
     };
     const handleChangeOpacity = (id: TOverlayId, opacity: number) => {
         dispatch(editOverlaysActions.changeOpacity({ [id]: opacity }));
-        triggerClientEvent<TOverlays>('f:c:editOverlays', overlays);
     };
+
+    useEffect(() => {
+        triggerClientEvent<TOverlays>('f:c:editOverlays', overlays);
+    }, [overlays]);
 
     return (
         <VStack gap={'m'}>

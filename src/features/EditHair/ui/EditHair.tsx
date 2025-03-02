@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { ESex } from '@/shared/types/ESex.ts';
 
@@ -20,8 +20,11 @@ export const EditHair: FC = () => {
 
     const handleChangeParamHair = (param: keyof THair, value: number) => {
         dispatch(editHairActions.change({ [param]: value }));
-        triggerClientEvent<THair>('f:c:editHair', hair);
     };
+
+    useEffect(() => {
+        triggerClientEvent<THair>('f:c:editHair', hair);
+    }, [hair]);
 
     const currentSex = useSelector(getSex);
     const haircutCollection = currentSex === ESex.MALE ? maleHair : femaleHair;

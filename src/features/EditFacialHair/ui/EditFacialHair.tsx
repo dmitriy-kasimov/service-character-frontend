@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { hairColors } from '@/shared/const/hairColors.ts';
 import { facialHairData } from '../const/facialHairData.ts';
@@ -18,8 +18,11 @@ export const EditFacialHair: FC = () => {
         value: number,
     ) => {
         dispatch(editFacialHairActions.change({ [param]: value }));
-        triggerClientEvent<TFacialHair>('f:c:editFacialHair', facialHair);
     };
+
+    useEffect(() => {
+        triggerClientEvent<TFacialHair>('f:c:editFacialHair', facialHair);
+    }, [facialHair]);
 
     return (
         <VStack gap={'s'}>

@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { Accordion, Text, VStack } from '@project-1114/ui-kit';
 import { EditSex } from '@/features/EditSex';
 import { EditFaceFeatures } from '@/features/EditFaceFeatures';
@@ -6,8 +6,15 @@ import { EditOverlays } from '@/features/EditOverlays';
 import { EditInheritance } from '@/features/EditInheritance';
 import { EditHair } from '@/features/EditHair';
 import { EditFacialHair } from '@/features/EditFacialHair';
+import { useInitCharacter } from '@/shared/hooks/useInitCharacter.ts';
 
 export const CreateCharacter: FC = () => {
+    const init = useInitCharacter();
+
+    useEffect(() => {
+        init();
+    }, []);
+
     return (
         <VStack gap={'xs'}>
             <Accordion

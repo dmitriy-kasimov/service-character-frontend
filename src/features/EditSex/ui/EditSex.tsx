@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { RadioGroup, RadioGroupOptionType } from '@project-1114/ui-kit';
 import { editSexActions } from '../model/slices/editSexSlice.ts';
 import { ESex } from '@/shared/types/ESex.ts';
@@ -21,8 +21,11 @@ export const EditSex: FC = () => {
     const sex = useSelector(getSex);
     const handleChangeSex = (value: string) => {
         dispatch(editSexActions.change(+value as ESex));
-        triggerClientEvent<ESex>('f:c:editSex', sex);
     };
+
+    useEffect(() => {
+        triggerClientEvent<ESex>('f:c:editSex', sex);
+    }, [sex]);
 
     return (
         <RadioGroup name={'sex'} onChange={handleChangeSex} options={options} />

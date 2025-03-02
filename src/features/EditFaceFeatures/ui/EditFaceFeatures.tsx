@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useEffect } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { faceFeatures } from '../const/faceFeatures.ts';
 import { EFaceFeature } from '../model/types/EFaceFeature.ts';
@@ -15,8 +15,11 @@ export const EditFaceFeatures: FC = () => {
 
     const handleChangeFaceFeature = (feature: EFaceFeature, value: number) => {
         dispatch(editFaceFeaturesActions.change({ [feature]: value }));
-        triggerClientEvent<TFaceFeatures>('f:c:editFaceFeatures', features);
     };
+
+    useEffect(() => {
+        triggerClientEvent<TFaceFeatures>('f:c:editFaceFeatures', features);
+    }, [features]);
 
     return (
         <VStack gap={'l'} align={'center'} max>
