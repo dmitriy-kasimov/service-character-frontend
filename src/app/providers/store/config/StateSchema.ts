@@ -4,6 +4,7 @@ import { EditOverlaysSchema } from '@/features/EditOverlays';
 import { EditInheritanceSchema } from '@/features/EditInheritance';
 import { EditHairSchema } from '@/features/EditHair';
 import { EditFacialHairSchema } from '@/features/EditFacialHair';
+import { EditEyesSchema } from '@/features/EditEyes';
 
 export type StateSchema = {
     editSex: EditSexSchema;
@@ -12,4 +13,5 @@ export type StateSchema = {
     editInheritance: EditInheritanceSchema;
     editHair: EditHairSchema;
     editFacialHair: EditFacialHairSchema;
+    editEyes: EditEyesSchema;
 };

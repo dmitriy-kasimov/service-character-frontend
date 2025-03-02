@@ -7,6 +7,7 @@ import { EditInheritance } from '@/features/EditInheritance';
 import { EditHair } from '@/features/EditHair';
 import { EditFacialHair } from '@/features/EditFacialHair';
 import { useInitCharacter } from '@/shared/hooks/useInitCharacter.ts';
+import { EditEyes } from '@/features/EditEyes';
 
 export const CreateCharacter: FC = () => {
     const init = useInitCharacter();
@@ -29,7 +30,10 @@ export const CreateCharacter: FC = () => {
                 title={<Text size={'l'}>Hair</Text>}
                 description={<EditHair />}
             />
-
+            <Accordion
+                title={<Text size={'l'}>Eyes</Text>}
+                description={<EditEyes />}
+            />
             <Accordion
                 title={<Text size={'l'}>Face Features</Text>}
                 description={<EditFaceFeatures />}

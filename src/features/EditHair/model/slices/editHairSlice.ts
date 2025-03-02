@@ -6,8 +6,6 @@ const initialState: EditHairSchema = {
         hair: 0,
         hairColor2: 5,
         hairColor1: 1,
-        eyebrowsColor1: 4,
-        eyebrows: 0,
     },
 };
 

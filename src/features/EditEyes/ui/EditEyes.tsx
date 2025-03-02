@@ -1,71 +1,63 @@
 import { FC, useEffect } from 'react';
 import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
-import { ESex } from '@/shared/types/ESex.ts';
-
+import { eyebrows } from '../const/eyebrows.ts';
 import { hairColors } from '@/shared/const/hairColors.ts';
-import { maleHair } from '../const/maleHair.ts';
-import { femaleHair } from '../const/femaleHair.ts';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
 import { useSelector } from 'react-redux';
-import { getHair } from '../model/selectors/editHairSelectors.ts';
-import { THair } from '../model/types/EditHairSchema.ts';
-import { editHairActions } from '../model/slices/editHairSlice.ts';
-import { getSex } from '@/features/EditSex';
+import { getEyes } from '..';
+import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
+import { TEyes } from '../model/types/EditEyesSchema.ts';
+import { editEyesActions } from '../model/slices/editEyesSlice.ts';
 import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 
-export const EditHair: FC = () => {
+export const EditEyes: FC = () => {
+    const eyes = useSelector(getEyes);
     const dispatch = useAppDispatch();
-    const hair = useSelector(getHair);
 
-    const handleChangeParamHair = (param: keyof THair, value: number) => {
-        dispatch(editHairActions.change({ [param]: value }));
+    const handleChangeEyesParam = (param: keyof TEyes, value: number) => {
+        dispatch(editEyesActions.change({ [param]: value }));
     };
 
     useEffect(() => {
-        triggerClientEvent<THair>('f:c:editHair', hair);
-    }, [hair]);
-
-    const currentSex = useSelector(getSex);
-    const haircutCollection = currentSex === ESex.MALE ? maleHair : femaleHair;
-    const countHaircuts = haircutCollection.length;
+        triggerClientEvent<TEyes>('f:c:editEyes', eyes);
+    }, [eyes]);
 
     return (
         <VStack gap={'s'}>
             <VStack gap={'xs'} align={'start'} max>
-                <Text>Hair</Text>
+                <Text>Eyes color</Text>
                 <HStack gap={'s'} align={'center'} justify={'center'} max>
                     <Slider
-                        value={hair.hair}
+                        value={eyes.eyesColor}
                         onChange={(value) =>
-                            handleChangeParamHair('hair', value)
+                            handleChangeEyesParam('eyesColor', value)
                         }
                         min={0}
-                        max={countHaircuts}
+                        max={30}
                         step={1}
                     />
                 </HStack>
             </VStack>
             <VStack gap={'xs'} align={'start'} max>
-                <Text>Hair color 1</Text>
+                <Text>Eyebrows</Text>
                 <HStack gap={'s'} align={'center'} justify={'center'} max>
                     <Slider
-                        value={hair.hairColor1}
+                        value={eyes.eyebrows}
                         onChange={(value) =>
-                            handleChangeParamHair('hairColor1', value)
+                            handleChangeEyesParam('eyebrows', value)
                         }
                         min={0}
-                        max={hairColors.length}
+                        max={eyebrows.length}
                         step={1}
                     />
                 </HStack>
             </VStack>
             <VStack gap={'xs'} align={'start'} max>
-                <Text>Hair color 2</Text>
+                <Text>Eyebrows color</Text>
                 <HStack gap={'s'} align={'center'} justify={'center'} max>
                     <Slider
-                        value={hair.hairColor2}
+                        value={eyes.eyebrowsColor1}
                         onChange={(value) =>
-                            handleChangeParamHair('hairColor2', value)
+                            handleChangeEyesParam('eyebrowsColor1', value)
                         }
                         min={0}
                         max={hairColors.length}
