@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { Accordion, Text, VStack } from '@project-1114/ui-kit';
+import { Accordion, Card, Text, VStack } from '@project-1114/ui-kit';
 import { EditSex } from '@/features/EditSex';
 import { EditFaceFeatures } from '@/features/EditFaceFeatures';
 import { EditOverlays } from '@/features/EditOverlays';
@@ -18,39 +18,49 @@ export const CreateCharacter: FC = () => {
     }, []);
 
     return (
-        <VStack gap={'xs'}>
-            <Accordion
-                title={<Text size={'l'}>Sex</Text>}
-                description={<EditSex />}
-            />
-            <Accordion
-                title={<Text size={'l'}>Inheritance</Text>}
-                description={<EditInheritance />}
-            />
-            <Accordion
-                title={<Text size={'l'}>Hair</Text>}
-                description={<EditHair />}
-            />
-            <Accordion
-                title={<Text size={'l'}>Eyes</Text>}
-                description={<EditEyes />}
-            />
-            <Accordion
-                title={<Text size={'l'}>Face Features</Text>}
-                description={<EditFaceFeatures />}
-            />
-            <Accordion
-                title={<Text size={'l'}>Overlays</Text>}
-                description={<EditOverlays />}
-            />
-            <Accordion
-                title={<Text size={'l'}>Color overlays</Text>}
-                description={<EditColorOverlays />}
-            />
-            <Accordion
-                title={<Text size={'l'}>Facial hair</Text>}
-                description={<EditFacialHair />}
-            />
-        </VStack>
+        <Card style={{width: '20%'}}>
+            <VStack gap={'xs'} max>
+                <Accordion
+                    title={<Text size={'l'}>Sex</Text>}
+                    description={<EditSex />}
+                    fullWidth
+                />
+                <Accordion
+                    title={<Text size={'l'}>Inheritance</Text>}
+                    description={<EditInheritance />}
+                    fullWidth
+                />
+                <Accordion
+                    title={<Text size={'l'}>Hair</Text>}
+                    description={<EditHair />}
+                    fullWidth
+                />
+                <Accordion
+                    title={<Text size={'l'}>Eyes</Text>}
+                    description={<EditEyes />}
+                    fullWidth
+                />
+                <Accordion
+                    title={<Text size={'l'}>Face Features</Text>}
+                    description={<EditFaceFeatures />}
+                    fullWidth
+                />
+                <Accordion
+                    title={<Text size={'l'}>Overlays</Text>}
+                    description={<EditOverlays />}
+                    fullWidth
+                />
+                <Accordion
+                    title={<Text size={'l'}>Color overlays</Text>}
+                    description={<EditColorOverlays />}
+                    fullWidth
+                />
+                <Accordion
+                    title={<Text size={'l'}>Facial hair</Text>}
+                    description={<EditFacialHair />}
+                    fullWidth
+                />
+            </VStack>
+        </Card>
     );
 };
