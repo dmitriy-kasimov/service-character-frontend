@@ -39,7 +39,6 @@ export const EditFaceFeatures: FC = () => {
                             min={-1}
                             step={0.1}
                             max={1}
-                            showValue={false}
                         />
                         <Text size={'s'}>{feature.to}</Text>
                     </HStack>

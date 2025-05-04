@@ -2,3 +2,10 @@
   width: 100%;
   height: 100vh;
 }
+
+:root{
+  --swiper-theme-color: var(--color-accent);
+  --swiper-pagination-bullet-inactive-color: var(--color-secondary);
+  --swiper-scrollbar-drag-bg-color: var(--color-accent);
+  --swiper-scrollbar-bg-color: var(--color-secondary);
+}

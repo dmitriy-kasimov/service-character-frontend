@@ -38,7 +38,12 @@ export const CreateCharacter: FC = () => {
                 <Accordion
                     title={
                         <HStack align={'center'} gap={'l'}>
-                            <Icon Svg={SexIcon} fill={'var(--color-accent)'} />
+                            <Icon
+                                Svg={SexIcon}
+                                fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
+                            />
                             <Text size={'l'}>Sex</Text>
                         </HStack>
                     }
@@ -51,6 +56,8 @@ export const CreateCharacter: FC = () => {
                             <Icon
                                 Svg={InheritanceIcon}
                                 fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
                             />
                             <Text size={'l'}>Inheritance</Text>
                         </HStack>
@@ -61,7 +68,12 @@ export const CreateCharacter: FC = () => {
                 <Accordion
                     title={
                         <HStack align={'center'} gap={'l'}>
-                            <Icon Svg={HairIcon} fill={'var(--color-accent)'} />
+                            <Icon
+                                Svg={HairIcon}
+                                fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
+                            />
                             <Text size={'l'}>Hair</Text>
                         </HStack>
                     }
@@ -71,7 +83,12 @@ export const CreateCharacter: FC = () => {
                 <Accordion
                     title={
                         <HStack align={'center'} gap={'l'}>
-                            <Icon Svg={EyesIcon} fill={'var(--color-accent)'} />
+                            <Icon
+                                Svg={EyesIcon}
+                                fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
+                            />
                             <Text size={'l'}>Eyes</Text>
                         </HStack>
                     }
@@ -84,6 +101,8 @@ export const CreateCharacter: FC = () => {
                             <Icon
                                 Svg={FaceFeaturesIcon}
                                 fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
                             />
                             <Text size={'l'}>Face features</Text>
                         </HStack>
@@ -97,6 +116,8 @@ export const CreateCharacter: FC = () => {
                             <Icon
                                 Svg={OverlaysIcon}
                                 fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
                             />
                             <Text size={'l'}>Overlays</Text>
                         </HStack>
@@ -110,6 +131,8 @@ export const CreateCharacter: FC = () => {
                             <Icon
                                 Svg={OverlaysIcon}
                                 fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
                             />
                             <Text size={'l'}>Color overlays</Text>
                         </HStack>
@@ -123,6 +146,8 @@ export const CreateCharacter: FC = () => {
                             <Icon
                                 Svg={FacialHairIcon}
                                 fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
                             />
                             <Text size={'l'}>Facial hair</Text>
                         </HStack>
