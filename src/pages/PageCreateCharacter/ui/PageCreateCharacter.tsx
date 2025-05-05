@@ -1,4 +1,5 @@
 import { MainAppearance } from '@/widgets/MainAppearance';
+import { MaleAppearance } from '@/widgets/MaleAppearance';
 import { Card, VStack } from '@project-1114/ui-kit';
 import { FC } from 'react';
 
@@ -7,6 +8,7 @@ export const PageCreateCharacter: FC = () => {
         <Card style={{ width: '20%', background: 'var(--color-main)' }}>
             <VStack gap={'l'} max>
                 <MainAppearance />
+                <MaleAppearance />
             </VStack>
         </Card>
     );

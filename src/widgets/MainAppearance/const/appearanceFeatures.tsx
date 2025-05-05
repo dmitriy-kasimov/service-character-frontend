@@ -1,11 +1,8 @@
-import React, { ReactElement } from 'react';
-
 import { EditSex } from '@/features/EditSex';
 import { EditFaceFeatures } from '@/features/EditFaceFeatures';
 import { EditOverlays } from '@/features/EditOverlays';
 import { EditInheritance } from '@/features/EditInheritance';
 import { EditHair } from '@/features/EditHair';
-import { EditFacialHair } from '@/features/EditFacialHair';
 import { EditEyes } from '@/features/EditEyes';
 import { EditColorOverlays } from '@/features/EditColorOverlays';
 
@@ -15,13 +12,9 @@ import HairIcon from '../assets/hair.svg?react';
 import InheritanceIcon from '../assets/inheritance.svg?react';
 import OverlaysIcon from '../assets/overlays.svg?react';
 import SexIcon from '../assets/sex.svg?react';
-import FacialHairIcon from '../assets/facial-hair.svg?react';
+import { TAppearanceFeature } from '@/shared/components/AppearanceFeature';
 
-export const appearanceFeatures: {
-    label: string;
-    icon: React.VFC<React.SVGProps<SVGSVGElement>>;
-    description: ReactElement;
-}[] = [
+export const appearanceFeatures: TAppearanceFeature[] = [
     { label: 'Sex', icon: SexIcon, description: <EditSex /> },
     {
         label: 'Inheritance',
@@ -40,10 +33,5 @@ export const appearanceFeatures: {
         label: 'Color overlays',
         icon: OverlaysIcon,
         description: <EditColorOverlays />,
-    },
-    {
-        label: 'Facial hair',
-        icon: FacialHairIcon,
-        description: <EditFacialHair />,
     },
 ];

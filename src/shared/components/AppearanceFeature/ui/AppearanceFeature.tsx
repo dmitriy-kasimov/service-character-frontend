@@ -1,17 +1,11 @@
 import { Accordion, HStack, Icon, Text } from '@project-1114/ui-kit';
-import React, { ReactElement } from 'react';
-
-type AppearanceFeatureProps = {
-    label: string;
-    icon: React.VFC<React.SVGProps<SVGSVGElement>>;
-    description: ReactElement;
-};
+import { TAppearanceFeature } from '../model/types/TAppearanceFeature.ts';
 
 export const AppearanceFeature = ({
     label,
     icon,
     description,
-}: AppearanceFeatureProps) => {
+}: TAppearanceFeature) => {
     return (
         <Accordion
             key={label}
