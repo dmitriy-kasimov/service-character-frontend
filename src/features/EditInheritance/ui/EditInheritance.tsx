@@ -46,7 +46,7 @@ export const EditInheritance: FC = () => {
         >
             <AppImage
                 src={`https://cdn-ra3.ragemp.su/cloud/img/parents/${index}.png`}
-                alt={'Z'}
+                alt={'Widgets'}
                 fallback={<Skeleton width={256} height={256} border={'5%'} />}
                 decoding={'async'}
             />
@@ -60,7 +60,7 @@ export const EditInheritance: FC = () => {
         >
             <AppImage
                 src={`https://cdn-ra3.ragemp.su/cloud/img/parents/${index + 21}.png`}
-                alt={'Z'}
+                alt={'Widgets'}
                 fallback={<Skeleton width={256} height={256} border={'5%'} />}
                 decoding={'async'}
             />
