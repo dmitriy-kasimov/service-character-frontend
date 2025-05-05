@@ -14,8 +14,8 @@ export const AppearanceFeature = ({
                     <Icon
                         Svg={icon}
                         fill={'var(--color-accent)'}
-                        width={32}
-                        height={32}
+                        width={48}
+                        height={48}
                     />
                     <Text size={'l'}>{label}</Text>
                 </HStack>
