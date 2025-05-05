@@ -17,7 +17,7 @@ import OverlaysIcon from '../assets/overlays.svg?react';
 import SexIcon from '../assets/sex.svg?react';
 import FacialHairIcon from '../assets/facial-hair.svg?react';
 
-export const Widgets: {
+export const appearanceFeatures: {
     label: string;
     icon: React.VFC<React.SVGProps<SVGSVGElement>>;
     description: ReactElement;
