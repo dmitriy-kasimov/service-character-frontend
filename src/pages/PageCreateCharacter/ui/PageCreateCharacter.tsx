@@ -9,7 +9,7 @@ export const PageCreateCharacter: FC = () => {
         <HStack max justify={'between'} align={'start'}>
             <Card
                 style={{
-                    width: '20%',
+                    width: '25%',
                     background: 'var(--color-main)',
                     borderBottomLeftRadius: 0,
                     borderTopLeftRadius: 0,

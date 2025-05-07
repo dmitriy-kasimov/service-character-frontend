@@ -7,6 +7,11 @@ import { neckFeatures } from './neckFeatures.ts';
 import { noseFeatures } from './noseFeatures.ts';
 import React, { VFC } from 'react';
 import CheekIcon from '../assets/cheek.svg?react';
+import ChinIcon from '../assets/chin.svg?react';
+import EyesIcon from '../assets/eyes.svg?react';
+import JawIcon from '../assets/jaw.svg?react';
+import NeckIcon from '../assets/neck.svg?react';
+import NoseIcon from '../assets/nose.svg?react';
 
 type TFeatures = 'cheek' | 'chin' | 'eyes' | 'jaw' | 'neck' | 'nose';
 type TFeature = {
@@ -23,26 +28,26 @@ export const faceFeatures: Record<TFeatures, TFeature> = {
     chin: {
         features: chinFeatures,
         description: 'Chin',
-        icon: CheekIcon,
+        icon: ChinIcon,
     },
     jaw: {
         features: jawFeatures,
         description: 'Jaw',
-        icon: CheekIcon,
+        icon: JawIcon,
     },
     eyes: {
         features: eyesFeatures,
         description: 'Eyes',
-        icon: CheekIcon,
+        icon: EyesIcon,
     },
     neck: {
         features: neckFeatures,
         description: 'Neck',
-        icon: CheekIcon,
+        icon: NeckIcon,
     },
     nose: {
         features: noseFeatures,
         description: 'Nose',
-        icon: CheekIcon,
+        icon: NoseIcon,
     },
 };
