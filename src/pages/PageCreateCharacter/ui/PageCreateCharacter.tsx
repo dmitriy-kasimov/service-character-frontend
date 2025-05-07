@@ -15,7 +15,7 @@ export const PageCreateCharacter: FC = () => {
                     borderTopLeftRadius: 0,
                 }}
             >
-                <VStack gap={'l'} max>
+                <VStack gap={'m'} max>
                     <MainAppearance />
                 </VStack>
             </Card>

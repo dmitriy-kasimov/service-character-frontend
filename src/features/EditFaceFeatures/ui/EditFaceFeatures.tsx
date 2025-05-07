@@ -1,49 +1,53 @@
-import { FC, useEffect } from 'react';
-import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
+import { FC } from 'react';
+import { Accordion, HStack, Icon, Text, VStack } from '@project-1114/ui-kit';
+import { FaceFeature } from './FaceFeature.tsx';
 import { faceFeatures } from '../const/faceFeatures.ts';
-import { EFaceFeature } from '../model/types/EFaceFeature.ts';
-import { getFaceFeatures } from '../model/selectors/editFaceFeaturesSelectors.ts';
-import { useSelector } from 'react-redux';
-import { editFaceFeaturesActions } from '../model/slices/editFaceFeaturesSlice.ts';
-import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
-import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
-import { TFaceFeatures } from '../model/types/EditFaceFeaturesSchema.ts';
+import cls from './EditFaceFeatures.module.scss';
 
 export const EditFaceFeatures: FC = () => {
-    const dispatch = useAppDispatch();
-    const features = useSelector(getFaceFeatures);
-
-    const handleChangeFaceFeature = (feature: EFaceFeature, value: number) => {
-        dispatch(editFaceFeaturesActions.change({ [feature]: value }));
-    };
-
-    useEffect(() => {
-        triggerClientEvent<TFaceFeatures>('f:c:editFaceFeatures', features);
-    }, [features]);
-
     return (
-        <VStack gap={'l'} align={'center'} max>
+        <VStack gap={'m'} max>
             {Object.entries(faceFeatures).map(([featureIndex, feature]) => (
-                <VStack gap={'xs'} align={'start'} key={featureIndex} max>
-                    <Text>{feature.description}</Text>
-                    <HStack gap={'s'} align={'center'} justify={'center'} max>
-                        <Text size={'s'}>{feature.from}</Text>
-                        <Slider
-                            value={features[+featureIndex as EFaceFeature]}
-                            onChange={(value) =>
-                                handleChangeFaceFeature(
-                                    +featureIndex as EFaceFeature,
-                                    value,
-                                )
-                            }
-                            min={-1}
-                            step={0.1}
-                            max={1}
-                        />
-                        <Text size={'s'}>{feature.to}</Text>
-                    </HStack>
-                </VStack>
+                <Accordion
+                    fullWidth
+                    className={cls.EditFaceFeatures}
+                    key={featureIndex}
+                    title={
+                        <HStack align={'center'} gap={'m'}>
+                            <Icon
+                                Svg={feature.icon}
+                                fill={'var(--color-accent)'}
+                                width={32}
+                                height={32}
+                            />
+                            <Text size={'m'}>{feature.description}</Text>
+                        </HStack>
+                    }
+                    description={Object.entries(feature.features).map(
+                        ([faceFeatureIndex, faceFeature]) => (
+                            <FaceFeature
+                                feature={faceFeature}
+                                featureIndex={faceFeatureIndex}
+                                key={faceFeatureIndex}
+                            />
+                        ),
+                    )}
+                />
             ))}
         </VStack>
     );
 };
+
+/*
+
+    <VStack gap={'l'} align={'center'} max>
+            {Object.entries(neckFeatures).map(([featureIndex, feature]) => (
+                <FaceFeature
+                    feature={feature}
+                    featureIndex={featureIndex}
+                    key={featureIndex}
+                />
+            ))}
+        </VStack>
+
+*/

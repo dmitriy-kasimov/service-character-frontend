@@ -10,7 +10,7 @@ export const AppearanceFeature = ({
         <Accordion
             key={label}
             title={
-                <HStack align={'center'} gap={'l'}>
+                <HStack align={'center'} gap={'m'}>
                     <Icon
                         Svg={icon}
                         fill={'var(--color-accent)'}
