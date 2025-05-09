@@ -7,7 +7,7 @@ import { useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 import { getFaceFeatures } from '../model/selectors/editFaceFeaturesSelectors';
-import { TFaceFeatures } from '../model/types/TFaceFeatures.ts';
+import { TFaceFeatures } from '../model/types/EditFaceFeaturesSchema.ts';
 
 type FaceFeatureProps = {
     feature: TDescriptionFaceFeature;

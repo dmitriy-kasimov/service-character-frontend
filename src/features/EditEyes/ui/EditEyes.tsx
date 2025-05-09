@@ -3,11 +3,11 @@ import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { eyebrows } from '../const/eyebrows.ts';
 import { hairColors } from '@/shared/const/hairColors.ts';
 import { useSelector } from 'react-redux';
-import { getEyes } from '..';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
 import { TEyes } from '../model/types/EditEyesSchema.ts';
 import { editEyesActions } from '../model/slices/editEyesSlice.ts';
 import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
+import { getEyes } from '../model/selectors/editEyesSelectors.ts';
 
 export const EditEyes: FC = () => {
     const eyes = useSelector(getEyes);
