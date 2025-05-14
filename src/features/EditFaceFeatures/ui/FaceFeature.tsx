@@ -1,4 +1,4 @@
-import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
+import { Slider } from '@project-1114/ui-kit';
 import { EFaceFeature } from '../model/types/EFaceFeature.ts';
 import { TDescriptionFaceFeature } from '../model/types/TDescriptionFaceFeature';
 import { editFaceFeaturesActions } from '../model/slices/editFaceFeaturesSlice';
@@ -8,6 +8,7 @@ import { useEffect } from 'react';
 import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 import { getFaceFeatures } from '../model/selectors/editFaceFeaturesSelectors';
 import { TFaceFeatures } from '../model/types/EditFaceFeaturesSchema.ts';
+import { AppearanceFeatureItem } from '@/shared/components/AppearanceFeatureItem';
 
 type FaceFeatureProps = {
     feature: TDescriptionFaceFeature;
@@ -26,10 +27,9 @@ export const FaceFeature = ({ feature, featureIndex }: FaceFeatureProps) => {
     }, [features]);
 
     return (
-        <VStack gap={'xs'} align={'start'} key={featureIndex} max>
-            <Text>{feature.description}</Text>
-            <HStack gap={'s'} align={'center'} justify={'center'} max>
-                <Text size={'s'}>{feature.from}</Text>
+        <AppearanceFeatureItem
+            title={feature.description}
+            slider={
                 <Slider
                     value={features[+featureIndex as EFaceFeature]}
                     onChange={(value) =>
@@ -42,8 +42,9 @@ export const FaceFeature = ({ feature, featureIndex }: FaceFeatureProps) => {
                     step={0.1}
                     max={1}
                 />
-                <Text size={'s'}>{feature.to}</Text>
-            </HStack>
-        </VStack>
+            }
+            from={feature.from}
+            to={feature.to}
+        />
     );
 };

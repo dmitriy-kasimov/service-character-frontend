@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
+import { Slider, VStack } from '@project-1114/ui-kit';
 
 import { hairColors } from '@/shared/const/hairColors.ts';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
@@ -9,6 +9,7 @@ import { THair } from '../model/types/EditHairSchema.ts';
 import { editHairActions } from '../model/slices/editHairSlice.ts';
 import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 import { HairContainer } from './HairContainer.tsx';
+import { AppearanceFeatureItem } from '@/shared/components/AppearanceFeatureItem';
 
 export const EditHair: FC = () => {
     const dispatch = useAppDispatch();
@@ -25,9 +26,9 @@ export const EditHair: FC = () => {
     return (
         <VStack gap={'s'}>
             <HairContainer />
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Hair color 1</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+            <AppearanceFeatureItem
+                title={'Hair color 1'}
+                slider={
                     <Slider
                         value={hair.hairColor1}
                         onChange={(value) =>
@@ -37,11 +38,13 @@ export const EditHair: FC = () => {
                         max={hairColors.length}
                         step={1}
                     />
-                </HStack>
-            </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Hair color 2</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                }
+                from={'0'}
+                to={`${hairColors.length}`}
+            />
+            <AppearanceFeatureItem
+                title={'Hair color 2'}
+                slider={
                     <Slider
                         value={hair.hairColor2}
                         onChange={(value) =>
@@ -51,8 +54,10 @@ export const EditHair: FC = () => {
                         max={hairColors.length}
                         step={1}
                     />
-                </HStack>
-            </VStack>
+                }
+                from={'0'}
+                to={`${hairColors.length}`}
+            />
         </VStack>
     );
 };

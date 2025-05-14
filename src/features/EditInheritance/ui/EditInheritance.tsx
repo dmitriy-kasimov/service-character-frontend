@@ -1,12 +1,5 @@
 import { FC, useEffect } from 'react';
-import {
-    AppImage,
-    HStack,
-    Skeleton,
-    Slider,
-    Text,
-    VStack,
-} from '@project-1114/ui-kit';
+import { AppImage, Skeleton, Slider, Text, VStack } from '@project-1114/ui-kit';
 import { getInheritance } from '../model/selectors/editInheritanceSelectors.ts';
 import { useSelector } from 'react-redux';
 import { TInheritance } from '../model/types/EditInheritanceSchema.ts';
@@ -23,6 +16,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
+import { AppearanceFeatureItem } from '@/shared/components/AppearanceFeatureItem';
 
 export const EditInheritance: FC = () => {
     const inheritance = useSelector(getInheritance);
@@ -85,9 +79,9 @@ export const EditInheritance: FC = () => {
                     {FatherSlides}
                 </Swiper>
             </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Skin father</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+            <AppearanceFeatureItem
+                title={'Skin father'}
+                slider={
                     <Slider
                         value={inheritance.skinFather}
                         onChange={(value) =>
@@ -97,8 +91,8 @@ export const EditInheritance: FC = () => {
                         max={45}
                         step={1}
                     />
-                </HStack>
-            </VStack>
+                }
+            />
             <VStack gap={'xs'} align={'start'} max>
                 <Text>Mother</Text>
                 <Swiper
@@ -115,9 +109,10 @@ export const EditInheritance: FC = () => {
                     {MotherSlides}
                 </Swiper>
             </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Skin mother</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+
+            <AppearanceFeatureItem
+                title={'Skin mother'}
+                slider={
                     <Slider
                         value={inheritance.skinMother}
                         onChange={(value) =>
@@ -127,12 +122,14 @@ export const EditInheritance: FC = () => {
                         max={45}
                         step={1}
                     />
-                </HStack>
-            </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Face mix</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
-                    <Text size={'s'}>Father</Text>
+                }
+            />
+
+            <AppearanceFeatureItem
+                title={'Face mix'}
+                from={'Father'}
+                to={'Mother'}
+                slider={
                     <Slider
                         value={inheritance.faceMix}
                         onChange={(value) =>
@@ -142,15 +139,16 @@ export const EditInheritance: FC = () => {
                         max={1}
                         step={0.1}
                     />
-                    <Text size={'s'}>Mother</Text>
-                </HStack>
-            </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Skin mix</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
-                    <Text size={'s'}>Father</Text>
+                }
+            />
+
+            <AppearanceFeatureItem
+                title={'Skin mix'}
+                from={'Father'}
+                to={'Mother'}
+                slider={
                     <Slider
-                        value={inheritance.skinMix}
+                        value={inheritance.faceMix}
                         onChange={(value) =>
                             handleChangeInheritanceParam('skinMix', value)
                         }
@@ -158,9 +156,8 @@ export const EditInheritance: FC = () => {
                         max={1}
                         step={0.1}
                     />
-                    <Text size={'s'}>Mother</Text>
-                </HStack>
-            </VStack>
+                }
+            />
         </VStack>
     );
 };

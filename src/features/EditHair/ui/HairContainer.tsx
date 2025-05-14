@@ -22,9 +22,8 @@ export const HairContainer: FC = () => {
     return (
         <div className={cls.HairContainer}>
             {hairSet.map((hair, index) => (
-                <div className={cls.imgWrapper}>
+                <div className={cls.imgWrapper} key={index}>
                     <AppImage
-                        key={index}
                         src={hair.img}
                         alt={hair.label}
                         className={cls.img}

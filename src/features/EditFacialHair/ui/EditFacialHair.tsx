@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
+import { Slider, VStack } from '@project-1114/ui-kit';
 import { hairColors } from '@/shared/const/hairColors.ts';
 import { facialHairData } from '../const/facialHairData.ts';
 import { useAppDispatch } from '@/shared/hooks/useAppDispatch.ts';
@@ -8,6 +8,7 @@ import { getFacialHair } from '../model/selectors/editFacialHairSelectors.ts';
 import { TFacialHair } from '../model/types/EditFacialHairSchema.ts';
 import { editFacialHairActions } from '../model/slices/editFacialHairSlice.ts';
 import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
+import { AppearanceFeatureItem } from '@/shared/components/AppearanceFeatureItem';
 
 export const EditFacialHair: FC = () => {
     const dispatch = useAppDispatch();
@@ -26,9 +27,9 @@ export const EditFacialHair: FC = () => {
 
     return (
         <VStack gap={'s'}>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Facial hair</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+            <AppearanceFeatureItem
+                title={'Facial hair'}
+                slider={
                     <Slider
                         value={facialHair.facialHair}
                         onChange={(value) =>
@@ -38,11 +39,13 @@ export const EditFacialHair: FC = () => {
                         max={facialHairData.length}
                         step={1}
                     />
-                </HStack>
-            </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Facial hair opacity</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                }
+                from={'0'}
+                to={`${facialHairData.length}`}
+            />
+            <AppearanceFeatureItem
+                title={'Facial hair opacity'}
+                slider={
                     <Slider
                         value={facialHair.facialHairOpacity}
                         onChange={(value) =>
@@ -55,11 +58,13 @@ export const EditFacialHair: FC = () => {
                         max={1.0}
                         step={0.1}
                     />
-                </HStack>
-            </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Facial Hair Color</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                }
+                from={'0'}
+                to={'1'}
+            />
+            <AppearanceFeatureItem
+                title={'Facial Hair Color'}
+                slider={
                     <Slider
                         value={facialHair.facialHairColor1}
                         onChange={(value) =>
@@ -72,8 +77,10 @@ export const EditFacialHair: FC = () => {
                         max={hairColors.length}
                         step={1}
                     />
-                </HStack>
-            </VStack>
+                }
+                from={'0'}
+                to={`${hairColors.length}`}
+            />
         </VStack>
     );
 };

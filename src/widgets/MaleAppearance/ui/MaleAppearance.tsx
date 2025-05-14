@@ -12,6 +12,7 @@ export const MaleAppearance = () => {
         <>
             {appearanceFeatures.map((feature) => (
                 <AppearanceFeature
+                    key={feature.label}
                     label={feature.label}
                     description={feature.description}
                     icon={feature.icon}

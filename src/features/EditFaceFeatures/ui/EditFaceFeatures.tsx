@@ -37,17 +37,3 @@ export const EditFaceFeatures: FC = () => {
         </VStack>
     );
 };
-
-/*
-
-    <VStack gap={'l'} align={'center'} max>
-            {Object.entries(neckFeatures).map(([featureIndex, feature]) => (
-                <FaceFeature
-                    feature={feature}
-                    featureIndex={featureIndex}
-                    key={featureIndex}
-                />
-            ))}
-        </VStack>
-
-*/

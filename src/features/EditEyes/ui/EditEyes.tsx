@@ -1,5 +1,5 @@
 import { FC, useEffect } from 'react';
-import { HStack, Slider, Text, VStack } from '@project-1114/ui-kit';
+import { Slider, VStack } from '@project-1114/ui-kit';
 import { eyebrows } from '../const/eyebrows.ts';
 import { hairColors } from '@/shared/const/hairColors.ts';
 import { useSelector } from 'react-redux';
@@ -8,6 +8,7 @@ import { TEyes } from '../model/types/EditEyesSchema.ts';
 import { editEyesActions } from '../model/slices/editEyesSlice.ts';
 import { triggerClientEvent } from '@/shared/api/triggerClientEvent.ts';
 import { getEyes } from '../model/selectors/editEyesSelectors.ts';
+import { AppearanceFeatureItem } from '@/shared/components/AppearanceFeatureItem';
 
 export const EditEyes: FC = () => {
     const eyes = useSelector(getEyes);
@@ -23,9 +24,9 @@ export const EditEyes: FC = () => {
 
     return (
         <VStack gap={'s'}>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Eyes color</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+            <AppearanceFeatureItem
+                title={'Eyes color'}
+                slider={
                     <Slider
                         value={eyes.eyesColor}
                         onChange={(value) =>
@@ -35,11 +36,12 @@ export const EditEyes: FC = () => {
                         max={30}
                         step={1}
                     />
-                </HStack>
-            </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Eyebrows</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                }
+            />
+
+            <AppearanceFeatureItem
+                title={'Eyebrows'}
+                slider={
                     <Slider
                         value={eyes.eyebrows}
                         onChange={(value) =>
@@ -49,11 +51,12 @@ export const EditEyes: FC = () => {
                         max={eyebrows.length}
                         step={1}
                     />
-                </HStack>
-            </VStack>
-            <VStack gap={'xs'} align={'start'} max>
-                <Text>Eyebrows color</Text>
-                <HStack gap={'s'} align={'center'} justify={'center'} max>
+                }
+            />
+
+            <AppearanceFeatureItem
+                title={'Eyebrows color'}
+                slider={
                     <Slider
                         value={eyes.eyebrowsColor1}
                         onChange={(value) =>
@@ -63,8 +66,8 @@ export const EditEyes: FC = () => {
                         max={hairColors.length}
                         step={1}
                     />
-                </HStack>
-            </VStack>
+                }
+            />
         </VStack>
     );
 };

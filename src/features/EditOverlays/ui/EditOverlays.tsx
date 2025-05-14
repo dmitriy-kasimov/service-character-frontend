@@ -26,33 +26,38 @@ export const EditOverlays: FC = () => {
     return (
         <VStack gap={'m'}>
             {Object.entries(overlaysData).map(([id, overlay]) => (
-                <VStack gap={'s'} key={overlay.label}>
-                    <Text>{overlay.label}</Text>
-                    <HStack gap={'s'} align={'center'}>
-                        <Text size={'s'}>value: </Text>
-                        <Slider
-                            value={overlays[id as TOverlayId].value}
-                            onChange={(value) =>
-                                handleChangeValue(id as TOverlayId, value)
-                            }
-                            min={overlay.min}
-                            step={1}
-                            max={overlay.max}
-                        />
-                    </HStack>
-                    <HStack gap={'s'} align={'center'}>
-                        <Text size={'s'}>opacity: </Text>
-                        <Slider
-                            value={overlays[id as TOverlayId].opacity}
-                            onChange={(opacity) =>
-                                handleChangeOpacity(id as TOverlayId, opacity)
-                            }
-                            min={0}
-                            step={0.1}
-                            max={1}
-                        />
-                    </HStack>
-                </VStack>
+                <>
+                    <VStack gap={'s'} key={overlay.label}>
+                        <Text>{overlay.label}</Text>
+                        <HStack gap={'s'} align={'center'}>
+                            <Text size={'s'}>value: </Text>
+                            <Slider
+                                value={overlays[id as TOverlayId].value}
+                                onChange={(value) =>
+                                    handleChangeValue(id as TOverlayId, value)
+                                }
+                                min={overlay.min}
+                                step={1}
+                                max={overlay.max}
+                            />
+                        </HStack>
+                        <HStack gap={'s'} align={'center'}>
+                            <Text size={'s'}>opacity: </Text>
+                            <Slider
+                                value={overlays[id as TOverlayId].opacity}
+                                onChange={(opacity) =>
+                                    handleChangeOpacity(
+                                        id as TOverlayId,
+                                        opacity,
+                                    )
+                                }
+                                min={0}
+                                step={0.1}
+                                max={1}
+                            />
+                        </HStack>
+                    </VStack>
+                </>
             ))}
         </VStack>
     );
