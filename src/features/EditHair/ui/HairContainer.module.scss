@@ -1,0 +1,25 @@
+.HairContainer{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: var(--uikit-indent-xs);
+
+  max-height: 20rem;
+  overflow-y: scroll;
+
+  .imgWrapper{
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+  }
+  .img{
+    width: 100%;
+    aspect-ratio: 1/1;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:hover{
+      transform: scale(1.1);
+    }
+  }
+}
