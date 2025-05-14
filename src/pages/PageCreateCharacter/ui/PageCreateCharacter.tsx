@@ -14,18 +14,7 @@ export const PageCreateCharacter: FC = () => {
 
     return (
         <HStack max justify={'between'} align={'start'}>
-            <Card
-                style={{
-                    width: '25%',
-                    background: 'var(--color-main)',
-                    borderBottomLeftRadius: 0,
-                    borderTopLeftRadius: 0,
-                }}
-            >
-                <VStack gap={'m'} max>
-                    <MainAppearance />
-                </VStack>
-            </Card>
+            <MainAppearance />
             <Card
                 style={{
                     width: '20%',
